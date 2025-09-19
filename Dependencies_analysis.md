@@ -1,144 +1,205 @@
-# Spring-Automocker Dependency Analysis
+# Spring Automocker Dependency Analysis
 
-## Project Overview
-- **Project Name:** spring-automocker
+## Overview
+
+This document provides a comprehensive analysis of the dependencies used in the Spring Automocker project. The analysis identifies outdated dependencies, security vulnerabilities, and provides recommendations for updates.
+
+**Project Information:**
+- **Name:** spring-automocker
 - **Version:** 1.2.2-SNAPSHOT
-- **Analysis Date:** 2025-09-19
-- **Package Manager:** Maven
-
-Spring-Automocker is a library that provides automatic mocking capabilities for various Spring components like JDBC, JMS, AMQP, and web MVC. The project has a multi-module structure with a core module and several starter modules for different Spring integrations.
+- **Type:** Maven multi-module project
+- **Analysis Date:** September 19, 2025
+- **Java Version:** 1.8
 
 ## Dependency Summary
 
-### Project Structure
-- Root Module (spring-automocker-reactor)
-- Core Module (spring-automocker)
-- Starter Modules:
-  - spring-automocker-starter
-  - spring-automocker-starter-web
-  - spring-automocker-starter-jdbc
-  - spring-automocker-starter-jms
-  - spring-automocker-starter-amqp
-- Sample Modules:
-  - spring-automocker-property-source-sample
-  - spring-automocker-mvc-sample
-  - spring-automocker-jdbc-sample
-  - spring-automocker-jms-sample
-  - spring-automocker-amqp-sample
-  - spring-automocker-graphite-sample
+| Category | Count |
+|----------|-------|
+| Total Dependencies | 39 |
+| Direct Dependencies | 20 |
+| Transitive Dependencies | 19 |
+| Outdated Dependencies | 30 |
+| Dependencies with Vulnerabilities | 4 |
 
-### Key Dependencies
+## Security Vulnerabilities
 
-#### Core Spring Framework
-- **spring-context:** 5.1.5.RELEASE (provided)
-- **spring-test:** 5.1.5.RELEASE (provided)
-- **spring-web:** 5.1.5.RELEASE (provided)
-- **spring-jms:** 5.1.5.RELEASE (provided)
-- **spring-rabbit:** 2.1.4.RELEASE (provided)
+### Critical Vulnerabilities
 
-#### Utility Libraries
-- **slf4j-api:** 1.7.26
-- **guava:** 27.1-jre
+1. **H2 Database (1.4.199)**
+   - **CVE-2021-42392**: Remote Code Execution (RCE) via JDBC URL with `IGNORE_UNKNOWN_SETTINGS=TRUE;FORBID_CREATION=FALSE;INIT=RUNSCRIPT`
+   - **Impact**: Allows attackers to execute arbitrary code through maliciously crafted JDBC URLs
+   - **Recommendation**: Upgrade to version 2.1.210 or higher
 
-#### Testing Frameworks
-- **junit-jupiter-api:** 5.4.0 (test)
-- **junit-jupiter-engine:** 5.4.0 (test)
-- **junit-jupiter-params:** 5.4.0 (test)
-- **assertj-core:** 3.12.1 (provided/test)
-- **mockito-core:** 2.25.0 (test)
+### High Vulnerabilities
 
-#### Mocking Libraries
-- **mockrunner-jms:** 2.0.1 (provided)
-- **rabbitmq-mock:** 1.0.10 (provided)
+1. **Jackson Databind (2.9.8)**
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-1056421**: Deserialization of Untrusted Data via `javax.swing` gadget
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-1056419**: Deserialization of Untrusted Data related to `org.docx4j.org.apache.xalan.lib.sql.JNDIConnectionPool`
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-1056417**: Deserialization of Untrusted Data related to `org.apache.tomcat.dbcp.dbcp.datasources.PerUserPoolDataSource`
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-2421244**: Denial of Service (DoS) via large depth of nested objects
+   - **Recommendation**: Upgrade to version 2.9.10.8 or higher (preferably 2.13.4.1+)
 
-#### Database Support
-- **h2:** 1.4.199 (test)
-- **hsqldb:** 2.4.1 (test)
+2. **H2 Database (1.4.199)**
+   - **SNYK-JAVA-COMH2DATABASE-1769238**: XML External Entity (XXE) Injection via `org.h2.jdbc.JdbcSQLXML`
+   - **CVE-2021-23463**: JDBC URL connection leakage that can lead to SSRF and exposure of credentials
+   - **Recommendation**: Upgrade to version 2.0.202 or higher
 
-#### Metrics Libraries
-- **metrics-graphite:** 4.0.5 (provided)
-- **micrometer-registry-graphite:** 1.1.3 (provided)
+### Medium Vulnerabilities
 
-#### Java APIs
-- **javax.servlet-api:** 4.0.1 (provided)
-- **javax.jms-api:** 2.0.1 (provided)
+1. **Spring Framework Core (5.1.5.RELEASE)**
+   - **SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878**: Improper Input Validation allowing insertion of additional log entries
+   - **SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097**: Improper Output Neutralization for Logs
+   - **Recommendation**: Upgrade to version 5.2.19.RELEASE, 5.3.14 or higher
 
-## Security Analysis
+2. **Jackson Databind (2.9.8)**
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-3038424**: Denial of Service (DoS) in `_deserializeFromArray()` when processing a deeply nested array
+   - **SNYK-JAVA-COMFASTERXMLJACKSONCORE-3038426**: Denial of Service (DoS) in `_deserializeWrappedValue()` when processing deeply nested arrays
+   - **Recommendation**: Upgrade to version 2.12.7.1, 2.13.4.1 or higher
 
-### Vulnerabilities
+3. **H2 Database (1.4.199)**
+   - **SNYK-JAVA-COMH2DATABASE-3146851**: Information Exposure via CLI arguments
+   - **Recommendation**: Upgrade to version 2.2.220 or higher
 
-| Library | Version | Vulnerability | Severity | Fixed Version | Recommendation |
-|---------|---------|--------------|----------|--------------|----------------|
-| com.h2database:h2 | 1.4.199 | CVE-2021-23463 | HIGH | 2.0.202 | Upgrade immediately to version 2.0.202 or later |
+### Low Vulnerabilities
 
-**Vulnerability Details:**
-- **CVE-2021-23463:** JdbcUtils in H2 through 1.4.200 mishandles the driver name in connection URLs, which can lead to SSRF and remote leakage of JDBC connection usernames and passwords.
+1. **Spring Framework Core (5.1.5.RELEASE)**
+   - **SNYK-JAVA-ORGSPRINGFRAMEWORK-8230365**: Improper Handling of Case Sensitivity in `DataBinder`
+   - **Recommendation**: Upgrade to version 6.1.14 or higher
 
-### Summary of Security Findings
-- **Critical Vulnerabilities:** 0
-- **High Vulnerabilities:** 1
-- **Moderate Vulnerabilities:** 0
-- **Low Vulnerabilities:** 0
+## Major Outdated Dependencies
 
-## Outdated Packages
+The following dependencies have major version updates available:
 
-| Library | Current Version | Latest Version | Recommendation |
-|---------|----------------|---------------|----------------|
-| org.springframework:spring-context | 5.1.5.RELEASE | 6.0.11 | Consider upgrading to at least 5.3.29 for security fixes |
-| com.google.guava:guava | 27.1-jre | 32.1.2-jre | Upgrade recommended |
-| org.junit.jupiter:junit-jupiter-api | 5.4.0 | 5.10.0 | Upgrade recommended |
-| com.h2database:h2 | 1.4.199 | 2.2.224 | Urgent upgrade required due to CVE-2021-23463 |
+1. **Spring Framework**: 5.1.5.RELEASE → 7.0.0-M9
+   - Core, Context, Web, Test, AOP, Beans, JMS components
+   - **Breaking Changes**: 
+     - Java 17+ required for Spring 6+
+     - Package name changes from javax to jakarta
+     - Removal of deprecated methods and classes
+     - Changes to Spring AOP and proxying behavior
 
-## License Compliance
+2. **SLF4J API**: 1.7.26 → 2.1.0-alpha1
+   - **Breaking Changes**: 
+     - SLF4J 2.0.0 has binary backwards compatibility but not source compatibility
+     - API changes for Logger methods
 
-The project dependencies use the following licenses:
+3. **JUnit Jupiter**: 5.4.0 → 6.0.0-RC3
+   - **Breaking Changes**: 
+     - API changes in test annotations and lifecycle methods
+     - Java 11+ required
+     - Changes in extension model
 
-| License | Count | Dependencies |
-|---------|-------|-------------|
-| Apache-2.0 | 16 | spring-*, guava, rabbitmq-mock, etc. |
-| MIT | 2 | slf4j-api, mockito-core |
-| EPL-2.0 | 4 | junit-jupiter-* |
-| CDDL-1.1 | 2 | javax.servlet-api, javax.jms-api |
-| MPL-2.0/EPL-1.0 | 1 | h2 |
-| BSD | 2 | hamcrest-core, hsqldb |
+4. **AssertJ**: 3.12.1 → 4.0.0-M1
+   - **Breaking Changes**: API changes in assertion methods
 
-All licenses appear to be compatible with this open-source project. The project itself is licensed under Apache-2.0.
+5. **Mockito**: 2.25.0 → 5.19.0
+   - **Breaking Changes**: 
+     - Changes in mocking behavior and API
+     - Different bytecode manipulation approach
+
+6. **H2 Database**: 1.4.199 → 2.3.232
+   - **Breaking Changes**: 
+     - JDBC URL format changes
+     - SQL compatibility changes
+     - Different default settings
+
+7. **Jackson**: 2.9.8 → 2.15.3
+   - **Breaking Changes**: 
+     - Changes in serialization/deserialization behavior
+     - Stricter type validation
+     - Removal of deprecated methods
+
+## License Information
+
+| License | Count |
+|---------|-------|
+| Apache-2.0 | 27 |
+| BSD-3-Clause | 2 |
+| MIT | 5 |
+| CDDL-1.1 | 2 |
+| EPL-2.0 | 3 |
 
 ## Recommendations
 
-1. **Security Updates:**
-   - Upgrade H2 database from 1.4.199 to at least 2.0.202 to address the high severity vulnerability (CVE-2021-23463)
+### Security Priority Updates
 
-2. **General Updates:**
-   - Consider upgrading Spring dependencies from 5.1.5.RELEASE to a newer version (at least 5.3.x) for better security and features
-   - Update Guava from 27.1-jre to the latest version
-   - Update JUnit Jupiter from 5.4.0 to the latest version
+1. **H2 Database**: Upgrade from 1.4.199 to 2.3.232 to address critical RCE and XXE vulnerabilities
+2. **Jackson Databind**: Upgrade from 2.9.8 to 2.15.3 to address multiple high severity vulnerabilities
+3. **Spring Framework**: Upgrade from 5.1.5.RELEASE to at least 5.3.14 to address medium severity vulnerabilities
 
-3. **Dependency Management:**
-   - Consider using dependency management for all libraries to ensure consistent versions across modules
-   - Review provided-scope dependencies to ensure they are properly declared in deployment environments
+### Dependency Groups Upgrade Strategy
 
-4. **Potential Improvements:**
-   - Consider using a dependency vulnerability scanning tool in the CI pipeline (e.g., OWASP Dependency Check)
-   - Implement automated dependency updates via Dependabot or similar tools
-   - Document dependency update policy for maintainers
+1. **Test Dependencies**
+   - **Priority**: Medium
+   - **Scope**: JUnit Jupiter, AssertJ, Mockito, and H2
+   - **Impact**: Minimal impact on production code
+   - **Approach**: Update test dependencies first, ensuring tests continue to pass
 
-## Dependency Tree Highlights
+2. **Utility Libraries**
+   - **Priority**: Medium
+   - **Scope**: SLF4J, Guava, and Hamcrest
+   - **Impact**: Medium impact, may require code changes for API changes
+   - **Approach**: Update utility libraries after test dependencies, with careful API migration
 
-Key dependency relationships in the project:
+3. **Spring Ecosystem**
+   - **Priority**: High (due to vulnerabilities)
+   - **Scope**: Spring Framework, Spring Boot, and Spring AMQP
+   - **Impact**: Major impact, requires significant changes for javax to jakarta migration
+   - **Approach**: 
+     1. First upgrade to the latest 5.3.x version to address security issues
+     2. Later plan a major migration to Spring 6+ with Jakarta EE
 
-```
-spring-automocker
-├── org.springframework:spring-context:5.1.5.RELEASE (provided)
-│   ├── org.springframework:spring-core:5.1.5.RELEASE
-│   ├── org.springframework:spring-beans:5.1.5.RELEASE
-│   ├── org.springframework:spring-aop:5.1.5.RELEASE
-│   └── org.springframework:spring-expression:5.1.5.RELEASE
-├── org.slf4j:slf4j-api:1.7.26
-├── com.google.guava:guava:27.1-jre
-└── [other provided/test dependencies]
-```
+4. **Third-party Integration Libraries**
+   - **Priority**: Low
+   - **Scope**: Mockrunner JMS, RabbitMQ Mock, and Metrics libraries
+   - **Impact**: Medium impact, dependent on Spring version
+   - **Approach**: Update these after Spring core components are updated
+
+### Migration Considerations
+
+1. **Java Version Compatibility**
+   - Spring Framework 6+ requires Java 17 or higher
+   - Consider upgrading the Java version as part of the dependency updates
+   - Update Maven compiler configuration to match the new Java version
+
+2. **Jakarta EE Transition**
+   - Many dependencies have moved from javax to jakarta namespace in newer versions
+   - This will require code changes in import statements and potentially API usage
+   - Use automated tools like OpenRewrite or Spring's migration guides
+
+3. **API Breaking Changes**
+   - Several libraries have introduced breaking changes in their APIs
+   - Carefully review release notes and migration guides for each library
+   - Consider using deprecated APIs during transition if available
+
+4. **Testing Strategy**
+   - Implement comprehensive tests before and after upgrades
+   - Consider a phased approach starting with test libraries, then utility libraries, and finally framework libraries
+   - Use feature flags to enable new dependencies gradually in production
+
+### Specific Migration Steps
+
+1. **H2 Database Update**
+   - Update H2 to version 2.1.210+ to address security vulnerabilities
+   - Review JDBC URL strings for compatibility with new H2 version
+   - Test database initialization scripts for syntax changes
+
+2. **Jackson Update**
+   - Update Jackson to at least version 2.9.10.8 to address security issues
+   - For full feature support, consider updating to 2.15.3
+   - Review custom serializers and deserializers for API compatibility
+
+3. **Spring Framework Update**
+   - First update to Spring 5.3.29 to address security vulnerabilities
+   - Test thoroughly with the updated version
+   - Plan separate migration to Spring 6.x with Jakarta EE changes
 
 ## Conclusion
 
-The Spring-Automocker project has a well-structured dependency management approach with clear separation between core dependencies, provided integrations, and test-only dependencies. The most pressing concern is the high-severity vulnerability in the H2 database library, which should be addressed immediately. Several dependencies are also somewhat outdated and would benefit from updates to more recent versions.
+The Spring Automocker project has a significant number of outdated dependencies, including several with security vulnerabilities. The most critical issues are in the H2 database library (RCE vulnerability) and Jackson Databind library (multiple deserialization vulnerabilities).
+
+A structured approach to updating these dependencies is recommended, starting with the most critical security vulnerabilities in H2 and Jackson, followed by a phased approach for the remaining dependencies.
+
+The major version upgrades for Spring Framework and related components will require careful planning and testing due to the significant API changes involved, particularly the transition from javax to jakarta namespace and the requirement for Java 17+ with Spring 6.
+
+This report recommends addressing security vulnerabilities immediately while planning a comprehensive update strategy for all outdated dependencies to ensure the project remains secure and maintainable.
