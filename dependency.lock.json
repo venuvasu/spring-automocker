@@ -1,0 +1,450 @@
+{
+  "metadata": {
+    "project_name": "spring-automocker",
+    "version": "1.2.2-SNAPSHOT",
+    "type": "maven",
+    "analysis_timestamp": "2025-09-19T12:30:00-06:00",
+    "package_managers": ["Maven"]
+  },
+  "runtime_versions": {
+    "java": "1.8"
+  },
+  "direct_dependencies": {
+    "org.springframework:spring-context": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [
+        {
+          "severity": "MEDIUM",
+          "description": "Improper Input Validation",
+          "cve": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878",
+          "fixed_in": ["5.2.19.RELEASE", "5.3.14"]
+        },
+        {
+          "severity": "MEDIUM",
+          "description": "Improper Output Neutralization for Logs",
+          "cve": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097",
+          "fixed_in": ["5.3.12", "5.2.18"]
+        }
+      ],
+      "is_outdated": true
+    },
+    "org.springframework:spring-test": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.slf4j:slf4j-api": {
+      "version": "1.7.26",
+      "scope": "compile",
+      "latest_version": "2.1.0-alpha1",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "com.google.guava:guava": {
+      "version": "27.1-jre",
+      "scope": "compile",
+      "latest_version": "33.5.0-jre",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.springframework:spring-web": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "javax.servlet:javax.servlet-api": {
+      "version": "4.0.1",
+      "scope": "provided",
+      "latest_version": "4.0.1",
+      "vulnerabilities": [],
+      "is_outdated": false
+    },
+    "javax.jms:javax.jms-api": {
+      "version": "2.0.1",
+      "scope": "provided",
+      "latest_version": "3.1.0", 
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.springframework:spring-jms": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "com.mockrunner:mockrunner-jms": {
+      "version": "2.0.1",
+      "scope": "provided",
+      "latest_version": "2.0.7",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.assertj:assertj-core": {
+      "version": "3.12.1",
+      "scope": "provided",
+      "latest_version": "4.0.0-M1",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "io.dropwizard.metrics:metrics-graphite": {
+      "version": "4.0.5",
+      "scope": "provided",
+      "latest_version": "4.2.37",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "io.micrometer:micrometer-registry-graphite": {
+      "version": "1.1.3",
+      "scope": "provided",
+      "latest_version": "1.16.0-M3",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.springframework.amqp:spring-rabbit": {
+      "version": "2.1.4.RELEASE",
+      "scope": "provided",
+      "latest_version": "4.0.0-M5",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "com.github.fridujo:rabbitmq-mock": {
+      "version": "1.0.10",
+      "scope": "provided",
+      "latest_version": "1.2.0",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.hamcrest:hamcrest-core": {
+      "version": "2.1",
+      "scope": "provided",
+      "latest_version": "3.0",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.mockito:mockito-core": {
+      "version": "2.25.0",
+      "scope": "test",
+      "latest_version": "5.19.0",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.junit.jupiter:junit-jupiter-api": {
+      "version": "5.4.0",
+      "scope": "test",
+      "latest_version": "6.0.0-RC3",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.junit.jupiter:junit-jupiter-engine": {
+      "version": "5.4.0",
+      "scope": "test",
+      "latest_version": "6.0.0-RC3",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "org.junit.jupiter:junit-jupiter-params": {
+      "version": "5.4.0",
+      "scope": "test",
+      "latest_version": "6.0.0-RC3",
+      "vulnerabilities": [],
+      "is_outdated": true
+    },
+    "com.h2database:h2": {
+      "version": "1.4.199",
+      "scope": "test",
+      "latest_version": "2.3.232",
+      "vulnerabilities": [
+        {
+          "severity": "CRITICAL",
+          "description": "Remote Code Execution (RCE)",
+          "cve": "CVE-2021-42392",
+          "fixed_in": ["2.1.210"]
+        },
+        {
+          "severity": "HIGH",
+          "description": "XML External Entity (XXE) Injection",
+          "cve": "SNYK-JAVA-COMH2DATABASE-1769238",
+          "fixed_in": ["2.0.202"]
+        },
+        {
+          "severity": "MEDIUM",
+          "description": "Information Exposure",
+          "cve": "SNYK-JAVA-COMH2DATABASE-3146851",
+          "fixed_in": ["2.2.220"]
+        },
+        {
+          "severity": "HIGH",
+          "description": "JDBC URL connection leakage",
+          "cve": "CVE-2021-23463",
+          "fixed_in": ["2.0.202"]
+        }
+      ],
+      "is_outdated": true
+    },
+    "com.fasterxml.jackson.core:jackson-databind": {
+      "version": "2.9.8",
+      "scope": "provided",
+      "latest_version": "2.15.3",
+      "vulnerabilities": [
+        {
+          "severity": "HIGH",
+          "description": "Deserialization of Untrusted Data",
+          "cve": "SNYK-JAVA-COMFASTERXMLJACKSONCORE-1056421",
+          "fixed_in": ["2.9.10.7"]
+        },
+        {
+          "severity": "HIGH",
+          "description": "Deserialization of Untrusted Data (multiple gadgets)",
+          "cve": "SNYK-JAVA-COMFASTERXMLJACKSONCORE-1056419",
+          "fixed_in": ["2.9.10.8"]
+        },
+        {
+          "severity": "HIGH",
+          "description": "Denial of Service (DoS)",
+          "cve": "SNYK-JAVA-COMFASTERXMLJACKSONCORE-2421244",
+          "fixed_in": ["2.12.6.1", "2.13.2.1"]
+        },
+        {
+          "severity": "MEDIUM",
+          "description": "Denial of Service (DoS) via nested arrays",
+          "cve": "SNYK-JAVA-COMFASTERXMLJACKSONCORE-3038424",
+          "fixed_in": ["2.12.7.1", "2.13.4"]
+        },
+        {
+          "severity": "MEDIUM",
+          "description": "Denial of Service (DoS) via deeply nested arrays",
+          "cve": "SNYK-JAVA-COMFASTERXMLJACKSONCORE-3038426",
+          "fixed_in": ["2.12.7.1", "2.13.4.1"]
+        }
+      ],
+      "is_outdated": true
+    }
+  },
+  "transitive_dependencies": {
+    "org.springframework:spring-aop": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-context"]
+    },
+    "org.springframework:spring-beans": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-context"]
+    },
+    "org.springframework:spring-core": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [
+        {
+          "severity": "MEDIUM",
+          "description": "Improper Input Validation",
+          "cve": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2330878",
+          "fixed_in": ["5.2.19.RELEASE", "5.3.14"]
+        },
+        {
+          "severity": "MEDIUM",
+          "description": "Improper Output Neutralization for Logs",
+          "cve": "SNYK-JAVA-ORGSPRINGFRAMEWORK-2329097",
+          "fixed_in": ["5.3.12", "5.2.18"]
+        },
+        {
+          "severity": "LOW",
+          "description": "Improper Handling of Case Sensitivity",
+          "cve": "SNYK-JAVA-ORGSPRINGFRAMEWORK-8230365",
+          "fixed_in": ["6.1.14"]
+        }
+      ],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-context", "org.springframework:spring-web", "org.springframework:spring-jms"]
+    },
+    "org.springframework:spring-jcl": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-core"]
+    },
+    "org.springframework:spring-expression": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-context"]
+    },
+    "com.google.guava:failureaccess": {
+      "version": "1.0.1",
+      "scope": "compile",
+      "latest_version": "1.0.2",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["com.google.guava:guava"]
+    },
+    "com.google.guava:listenablefuture": {
+      "version": "9999.0-empty-to-avoid-conflict-with-guava",
+      "scope": "compile",
+      "latest_version": "9999.0-empty-to-avoid-conflict-with-guava",
+      "vulnerabilities": [],
+      "is_outdated": false,
+      "required_by": ["com.google.guava:guava"]
+    },
+    "com.google.code.findbugs:jsr305": {
+      "version": "3.0.2",
+      "scope": "compile",
+      "latest_version": "3.0.2",
+      "vulnerabilities": [],
+      "is_outdated": false,
+      "required_by": ["com.google.guava:guava"]
+    },
+    "org.checkerframework:checker-qual": {
+      "version": "2.5.2",
+      "scope": "compile",
+      "latest_version": "3.39.0",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["com.google.guava:guava"]
+    },
+    "org.springframework:spring-messaging": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-jms"]
+    },
+    "org.springframework:spring-tx": {
+      "version": "5.1.5.RELEASE",
+      "scope": "provided",
+      "latest_version": "7.0.0-M9",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework:spring-jms"]
+    },
+    "org.springframework.amqp:spring-amqp": {
+      "version": "2.1.4.RELEASE",
+      "scope": "provided",
+      "latest_version": "4.0.0-M5",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework.amqp:spring-rabbit"]
+    },
+    "org.springframework.retry:spring-retry": {
+      "version": "1.2.4.RELEASE",
+      "scope": "provided",
+      "latest_version": "2.0.5",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework.amqp:spring-amqp"]
+    },
+    "com.rabbitmq:amqp-client": {
+      "version": "4.4.1",
+      "scope": "provided",
+      "latest_version": "5.20.0",
+      "vulnerabilities": [],
+      "is_outdated": true,
+      "required_by": ["org.springframework.amqp:spring-rabbit"]
+    }
+  },
+  "dependency_tree": {
+    "org.springframework:spring-context:5.1.5.RELEASE": {
+      "org.springframework:spring-aop:5.1.5.RELEASE": {},
+      "org.springframework:spring-beans:5.1.5.RELEASE": {},
+      "org.springframework:spring-core:5.1.5.RELEASE": {
+        "org.springframework:spring-jcl:5.1.5.RELEASE": {}
+      },
+      "org.springframework:spring-expression:5.1.5.RELEASE": {}
+    },
+    "org.springframework:spring-test:5.1.5.RELEASE": {},
+    "org.slf4j:slf4j-api:1.7.26": {},
+    "com.google.guava:guava:27.1-jre": {
+      "com.google.guava:failureaccess:1.0.1": {},
+      "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava": {},
+      "com.google.code.findbugs:jsr305:3.0.2": {},
+      "org.checkerframework:checker-qual:2.5.2": {},
+      "com.google.errorprone:error_prone_annotations:2.2.0": {},
+      "com.google.j2objc:j2objc-annotations:1.1": {},
+      "org.codehaus.mojo:animal-sniffer-annotations:1.17": {}
+    },
+    "org.springframework:spring-web:5.1.5.RELEASE": {},
+    "javax.servlet:javax.servlet-api:4.0.1": {},
+    "org.hamcrest:hamcrest-core:2.1": {
+      "org.hamcrest:hamcrest:2.1": {}
+    },
+    "org.springframework:spring-jms:5.1.5.RELEASE": {
+      "org.springframework:spring-messaging:5.1.5.RELEASE": {},
+      "org.springframework:spring-tx:5.1.5.RELEASE": {}
+    },
+    "javax.jms:javax.jms-api:2.0.1": {},
+    "com.mockrunner:mockrunner-jms:2.0.1": {
+      "com.mockrunner:mockrunner-core:2.0.1": {}
+    },
+    "org.springframework.amqp:spring-rabbit:2.1.4.RELEASE": {
+      "org.springframework.amqp:spring-amqp:2.1.4.RELEASE": {
+        "org.springframework.retry:spring-retry:1.2.4.RELEASE": {}
+      },
+      "com.rabbitmq:amqp-client:4.4.1": {}
+    },
+    "com.h2database:h2:1.4.199": {},
+    "com.fasterxml.jackson.core:jackson-databind:2.9.8": {}
+  },
+  "security_summary": {
+    "critical": 1,
+    "high": 6,
+    "medium": 4,
+    "low": 1,
+    "info": 0
+  },
+  "outdated_summary": {
+    "total_dependencies": 39,
+    "outdated_dependencies": 30,
+    "major_updates": 16,
+    "minor_updates": 9,
+    "patch_updates": 5
+  },
+  "license_summary": {
+    "Apache-2.0": 27,
+    "BSD-3-Clause": 2,
+    "MIT": 5,
+    "CDDL-1.1": 2,
+    "EPL-2.0": 3
+  },
+  "breaking_changes": {
+    "spring_framework": {
+      "5.x_to_6.x": [
+        "Java 17+ required",
+        "javax to jakarta namespace migration",
+        "Removal of deprecated methods and classes",
+        "Changes to Spring AOP and proxying"
+      ]
+    },
+    "jackson": {
+      "2.9_to_2.15": [
+        "Changed behavior of null handling",
+        "Stricter type validation",
+        "Removal of deprecated methods"
+      ]
+    },
+    "junit": {
+      "5.4_to_6.0": [
+        "API changes in test annotations",
+        "Lifecycle method behavior changes",
+        "Java 11+ required"
+      ]
+    }
+  }
+}
